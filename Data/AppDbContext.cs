@@ -1,6 +1,8 @@
+using Microsoft.EntityFrameworkCore;
+using ExamenParcialAPI.Models;
 namespace ExamenParcialAPI.Data;
 
-public class AppDbContext
+public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
 {
     
 }

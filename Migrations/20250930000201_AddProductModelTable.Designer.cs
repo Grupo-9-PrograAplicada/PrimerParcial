@@ -4,6 +4,7 @@ using ExamenParcialAPI.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ExamenParcialAPI.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250930000201_AddProductModelTable")]
+    partial class AddProductModelTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -23,10 +26,6 @@ namespace ExamenParcialAPI.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ExamenParcialAPI.Models.Product", b =>
-
-            modelBuilder.Entity("ExamenParcialAPI.Models.Event", b =>
- 
-            modelBuilder.Entity("ExamenParcialAPI.Models.Event", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -35,8 +34,6 @@ namespace ExamenParcialAPI.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<DateTime>("CreatedAt")
-                        .HasColumnType("datetime");
-                    b.Property<DateTime?>("EndAt")
                         .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
@@ -44,11 +41,7 @@ namespace ExamenParcialAPI.Migrations
 
                     b.Property<bool>("IsActive")
                         .HasColumnType("bit");
-                    b.Property<bool>("IsOnline")
-                        .HasColumnType("bit");
 
-                    b.Property<string>("Location")
-                        .HasColumnType("nvarchar(max)");
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -61,44 +54,11 @@ namespace ExamenParcialAPI.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Products");
-                    b.Property<DateTime?>("EndAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsOnline")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("Location")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Notes")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("StartAt")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Title")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Events");
-                })));
-                   
+                });
 #pragma warning restore 612, 618
         }
     }

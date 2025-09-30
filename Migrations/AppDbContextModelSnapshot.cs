@@ -23,6 +23,9 @@ namespace ExamenParcialAPI.Migrations
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
             modelBuilder.Entity("ExamenParcialAPI.Models.Product", b =>
+
+            modelBuilder.Entity("ExamenParcialAPI.Models.Event", b =>
+ 
             modelBuilder.Entity("ExamenParcialAPI.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -71,8 +74,31 @@ namespace ExamenParcialAPI.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Products");
+                    b.Property<DateTime?>("EndAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsOnline")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
                     b.ToTable("Events");
-                }));
+                })));
+                   
 #pragma warning restore 612, 618
         }
     }

@@ -21,6 +21,8 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+app.MapGet("/ping", () => Results.Ok("pong"));
+
 app.UseHttpsRedirection();
 
 app.UseAuthorization();

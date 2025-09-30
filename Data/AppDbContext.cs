@@ -6,4 +6,5 @@ public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(op
 {
     public DbSet<Product> Products { get; set; }
     public DbSet<Event> Events { get; set; }  
+    public DbSet<SupportTicket> SupportTickets { get; set; }
 }

@@ -22,10 +22,9 @@ namespace ExamenParcialAPI.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("ExamenParcialAPI.Models.SupportTicket", b =>
             modelBuilder.Entity("ExamenParcialAPI.Models.Product", b =>
-
-            modelBuilder.Entity("ExamenParcialAPI.Models.Event", b =>
- 
+                
             modelBuilder.Entity("ExamenParcialAPI.Models.Event", b =>
                 {
                     b.Property<int>("Id")
@@ -34,6 +33,8 @@ namespace ExamenParcialAPI.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("AssignedTo")
+                        .HasColumnType("nvarchar");
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime");
                     b.Property<DateTime?>("EndAt")
@@ -53,6 +54,8 @@ namespace ExamenParcialAPI.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("ClosedAt")
+                        .HasColumnType("datetime2");
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
@@ -61,13 +64,20 @@ namespace ExamenParcialAPI.Migrations
 
                     b.Property<DateTime?>("UpdatedAt")
                         .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .HasColumnType("nvarchar(max)");
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("StartAt")
                         .HasColumnType("datetime2");
+                    b.Property<DateTime>("OpenedAt")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Title")
+                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("RequesterEmail")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -81,12 +91,19 @@ namespace ExamenParcialAPI.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Location")
+                        .HasColumnType("nvarchar(max)");
+                    b.Property<string>("Severity")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
                     b.Property<string>("Notes")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Subject")
+                        .HasColumnType("nvarchar(max)");
                     b.Property<DateTime>("StartAt")
                         .HasColumnType("datetime2");
 
@@ -96,6 +113,7 @@ namespace ExamenParcialAPI.Migrations
 
                     b.HasKey("Id");
 
+                    b.ToTable("SupportTickets");
                     b.ToTable("Events");
                 })));
                    
